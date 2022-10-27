@@ -27,18 +27,16 @@ namespace ConsoleApp3
                 switch (op)
                 {
                     
-                    case 1: Registar(); break;
-                    case 2: Editar(); break;
+                    case 1: FazerRegisto(); break;
+                    case 2: FazerConsulta(); break;
+                    //case 2: Editar(); break;
                     
 
                     default:Console.WriteLine("OPÇÃO ERRADA");
                         break;
 
 
-
-
                 }
-
 
             }
 
@@ -46,10 +44,53 @@ namespace ConsoleApp3
 
 
 
-
         }
 
+        static private void FazerRegisto() 
+        {
+            Seguradora r = new Seguradora(100);
 
+            Console.Write("Insira a matricula:");
+            string mat = Console.ReadLine();
+            Console.Write("Insira a cor:");
+            string cor = Console.ReadLine();
+            Console.Write("Insira a estado:");
+            string estado = Console.ReadLine();
+            Console.Write("Insira a seguro:");
+            string seguro = Console.ReadLine();
+            Console.Write("Insira o nome do proprietario:");
+            string np = Console.ReadLine();
+
+            
+            r.Registar(mat, cor, estado, seguro, np);
+            
+
+           
+
+            Console.WriteLine("\nVeiculo registado com sucesso!");
+        }
+
+        static private void FazerConsulta()
+        {
+            Console.Write("Insira a matricula:");
+            string mat = Console.ReadLine();
+
+            
+            /*
+            foreach (Veiculo v in Seguradora registos)
+            {
+
+
+
+            }
+            */
+
+
+
+        
+        //------------------------- V1 COM O USO DE LISTAS -------------------------------------------------------
+
+        /*
 
         static void Registar()
         {
@@ -93,7 +134,7 @@ namespace ConsoleApp3
                     matricula.
                 }
             }
-            */
+            
 
             foreach (Veiculo v in Seguradora.GetVeiculos())
             {
@@ -128,6 +169,7 @@ namespace ConsoleApp3
 
 
 
+           */
 
 
 
@@ -140,7 +182,6 @@ namespace ConsoleApp3
 
 
 
-
-        }
+        
     }
 }
