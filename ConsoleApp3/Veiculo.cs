@@ -14,6 +14,7 @@ namespace ConsoleApp3
         private string estado;
         private string seguro;
         private string nome_proprietario;
+        private int num_acidentes;
 
 
 
@@ -26,15 +27,17 @@ namespace ConsoleApp3
             Estado = "";
             Seguro = "";
             Nome_proprietario = "";
+            Num_acidentes = 0;
         }
 
-        public Veiculo(string nmatricula, string ncor, string nestado, string nseguro, string nnome_proprietario)
+        public Veiculo(string nmatricula, string ncor, string nestado, string nseguro, string nnome_proprietario, int nnum_acidentes)
         {
             Matricula = nmatricula;
             Cor = ncor;
             Estado = nestado;
             Seguro = nseguro;
             Nome_proprietario = nnome_proprietario;
+            Num_acidentes = nnum_acidentes;
         }
 
 
@@ -44,5 +47,6 @@ namespace ConsoleApp3
         public string Estado { get => estado; set => estado = value; }
         public string Seguro { get => seguro; set => seguro = value; }
         public string Nome_proprietario { get => nome_proprietario; set => nome_proprietario = value; }
+        public int Num_acidentes { get => num_acidentes; set => num_acidentes = value; }
     }
 }

@@ -18,6 +18,7 @@ namespace ConsoleApp3
             {
                 Console.WriteLine("1 - Adicionar veiculo");
                 Console.WriteLine("2 - Consultar veiculos");
+                Console.WriteLine("3 - Editar dados veiculos");
 
 
                 Console.Write("Escolha uma opção:");
@@ -29,7 +30,9 @@ namespace ConsoleApp3
                     
                     case 1: FazerRegisto(); break;
                     case 2: FazerConsulta(); break;
-                    //case 2: Editar(); break;
+                    case 3: Editar(); break;
+                    case 4: Environment.Exit(0); break;
+
                     
 
                     default:Console.WriteLine("OPÇÃO ERRADA");
@@ -82,7 +85,7 @@ namespace ConsoleApp3
                 foreach (Veiculo v in Seguradora.GetVeiculos())
                 {
 
-                    Console.WriteLine($"Veiculo encontrado! - {v.Matricula}");
+                    Console.WriteLine($"Veiculo encontrado! - {v.Matricula} , {v.Seguro} , {v.Estado} , {v.Seguro} , {v.Nome_proprietario}");
 
                 }
             }
@@ -92,8 +95,63 @@ namespace ConsoleApp3
 
             }
 
+        }
+
+        static void Editar()
+        {
+            Console.Write("Insira a matricula:");
+            string mat = Console.ReadLine();
+
+            /*
+            foreach (string matricula in Seguradora.GetVeiculos())
+            {
+                if (matricula == mat)
+                { 
+                    matricula.
+                }
+            }
+            */
+
+            try
+            {
+                foreach (Veiculo v in Seguradora.GetVeiculos())
+                {
 
 
+                    if (v.Matricula == mat)
+                    {
+
+                        Console.Write("Insira a matricula:");
+                        v.Matricula = Console.ReadLine();
+                        Console.Write("Insira a cor:");
+                        v.Cor = Console.ReadLine();
+                        Console.Write("Insira a estado:");
+                        v.Estado = Console.ReadLine();
+                        Console.Write("Insira a seguro:");
+                        v.Seguro = Console.ReadLine();
+                        Console.Write("Insira o nome do proprietario:");
+                        v.Nome_proprietario = Console.ReadLine();
+
+                        Console.WriteLine($"Novos dados: {v.Matricula} , {v.Seguro} , {v.Estado} , {v.Seguro} , {v.Nome_proprietario}");
+                        Console.WriteLine("\nVeiculo editado com sucesso!");
+
+                    }
+                    else
+                    {
+                        continue;
+
+                    }
+
+
+
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine(" ");
+
+            }
+        }
 
 
             //------------------------- V1 COM O USO DE LISTAS -------------------------------------------------------
@@ -190,6 +248,6 @@ namespace ConsoleApp3
 
 
 
+
         }
-    }
 }
