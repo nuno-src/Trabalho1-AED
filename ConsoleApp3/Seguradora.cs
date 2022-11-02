@@ -26,9 +26,9 @@ namespace ConsoleApp3
             return registos;
         }
 
-        public void Registar(string nmatricula, string ncor, string nestado, string nseguro, string nnome_proprietario)
+        public void Registar(string nmatricula, string ncor, string nestado, string nseguro, string nnome_proprietario, int nnum_acidentes)
         {
-            Veiculo novo_veiculo = new Veiculo(nmatricula, ncor, nestado, nseguro, nnome_proprietario);
+            Veiculo novo_veiculo = new Veiculo(nmatricula, ncor, nestado, nseguro, nnome_proprietario, nnum_acidentes);
 
 
             if (!Existe(novo_veiculo))
