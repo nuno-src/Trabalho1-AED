@@ -8,7 +8,7 @@ namespace ConsoleApp3
 {
     public class Seguradora
     {
-        public Veiculo[] registos;
+        static public Veiculo[] registos;
         private int proxLivre;
 
         // private List<string> nomes = new List<string>();
@@ -21,6 +21,10 @@ namespace ConsoleApp3
             proxLivre = 0;
         }
 
+        static public Array GetVeiculos()
+        {
+            return registos;
+        }
 
         public void Registar(string nmatricula, string ncor, string nestado, string nseguro, string nnome_proprietario)
         {
@@ -44,7 +48,7 @@ namespace ConsoleApp3
             return false;
         }
 
-        internal Veiculo Consulta(string matricula)
+        public Veiculo Consulta(string matricula)
         {
             for (int i = 0; i < proxLivre; i++)
             {
@@ -52,6 +56,14 @@ namespace ConsoleApp3
                     return registos[i];
             }
             return null;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder res = new StringBuilder();
+            for (int i = 0; i < proxLivre; i++)
+                res.AppendLine(registos[i].ToString());
+            return res.ToString();
         }
 
 
