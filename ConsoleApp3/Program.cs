@@ -55,17 +55,25 @@ namespace ConsoleApp3
 
             Console.Write("Insira a matricula:");
             string mat = Console.ReadLine();
+
             Console.Write("Insira a cor:");
             string cor = Console.ReadLine();
+
             Console.Write("Insira a estado:");
             string estado = Console.ReadLine();
+
             Console.Write("Insira a seguro:");
             string seguro = Console.ReadLine();
+
             Console.Write("Insira o nome do proprietario:");
             string np = Console.ReadLine();
 
             
-            r.Registar(mat, cor, estado, seguro, np);
+            Console.Write("Insira o numero de acidentes do veiculo:");
+            int n_acidentes = int.Parse(Console.ReadLine());
+
+
+            r.Registar(mat, cor, estado, seguro, np, n_acidentes);
             
 
            
@@ -85,7 +93,7 @@ namespace ConsoleApp3
                 foreach (Veiculo v in Seguradora.GetVeiculos())
                 {
 
-                    Console.WriteLine($"Veiculo encontrado! - {v.Matricula} , {v.Seguro} , {v.Estado} , {v.Seguro} , {v.Nome_proprietario}");
+                    Console.WriteLine($"Veiculo encontrado! - {v.Matricula} , {v.Seguro} , {v.Estado} , {v.Seguro} , {v.Nome_proprietario}, {v.Num_acidentes}");
 
                 }
             }
@@ -132,7 +140,10 @@ namespace ConsoleApp3
                         Console.Write("Insira o nome do proprietario:");
                         v.Nome_proprietario = Console.ReadLine();
 
-                        Console.WriteLine($"Novos dados: {v.Matricula} , {v.Seguro} , {v.Estado} , {v.Seguro} , {v.Nome_proprietario}");
+                        Console.Write("Insira o numero de acidentes do veiculo:");
+                        int n_acidentes = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine($"Novos dados: {v.Matricula} , {v.Seguro} , {v.Estado} , {v.Seguro} , {v.Nome_proprietario}, {v.Num_acidentes}");
                         Console.WriteLine("\nVeiculo editado com sucesso!");
 
                     }
