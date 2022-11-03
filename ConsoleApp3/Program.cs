@@ -16,7 +16,7 @@ namespace ConsoleApp3
 
             
 
-            int op = 7;
+            int op = 8;
             while (op != 0)
             {
                 Console.WriteLine("\n-------------------MENU-----------------");
@@ -26,7 +26,8 @@ namespace ConsoleApp3
                 Console.WriteLine("4 - Adicionar Proprietario");
                 Console.WriteLine("5 - Consultar Proprietarios");
                 Console.WriteLine("6 - Editar dados Proprietarios");
-                Console.WriteLine("7 - Sair");
+                Console.WriteLine("7 - Prop com + que 1 carro");
+                Console.WriteLine("8 - Sair");
                 Console.WriteLine("------------------------------------------");
 
 
@@ -43,7 +44,8 @@ namespace ConsoleApp3
                     case 4: FazerRegistoP(); break;
                     case 5: FazerConsultaP(); break;
                     case 6: EditarP(); break;
-                    case 7: Environment.Exit(0); break;
+                    case 7: CalcPC(); break;
+                    case 8: Environment.Exit(0); break;
 
                     
 
@@ -276,6 +278,57 @@ namespace ConsoleApp3
 
             }
         }
+
+        //------------------- Outos --------------------------------
+
+        static private void CalcPC()
+        {
+             //Veiculo[] aux;
+             List<string> aux = new List<string>();
+
+            try
+            {
+                foreach (Veiculo v in r.GetVeiculos())
+                {
+                    int count = 0;
+
+                    foreach (Veiculo g in r.GetVeiculos())
+                    {
+                        if (v.Nome_proprietario == g.Nome_proprietario)
+                        {
+                            count++;
+                            if (count > 1)
+                            {
+                                if (!aux.Contains(g.Nome_proprietario))
+                                {
+                                    aux.Add(g.Nome_proprietario);
+                                
+                                }
+                            }
+                        
+                        
+                        }
+
+                    }
+
+                }
+
+                
+            }
+            catch (Exception)
+            {
+                Console.WriteLine(" ");
+
+            }
+
+            Console.WriteLine("Os seguintes proprietarios têm mais que um veiculo registado:");
+            foreach (string p in aux)
+            {
+                Console.WriteLine(p);
+            }
+        }
+
+
 
 
 
