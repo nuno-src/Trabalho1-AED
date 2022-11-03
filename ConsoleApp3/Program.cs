@@ -288,8 +288,8 @@ namespace ConsoleApp3
         static private void CalcPC()
         {
             //Veiculo[] aux;
-            //string[] aux;
-             List<string> aux = new List<string>();
+            string[] aux = { };
+             //List<string> aux = new List<string>();
 
             try
             {
@@ -306,7 +306,14 @@ namespace ConsoleApp3
                             {
                                 if (!aux.Contains(g.Nome_proprietario))
                                 {
-                                    aux.Add(g.Nome_proprietario);
+                                    int k = 1;
+                                    int u = 0;
+
+
+                                    Array.Resize(ref aux, k);
+                                    aux[u] = g.Nome_proprietario;
+
+                                    //aux.Add(g.Nome_proprietario);
                                 
                                 }
                             }
@@ -333,7 +340,7 @@ namespace ConsoleApp3
             }
         }
 
-
+        // Cores com 2 ou mais acidentes
         static private void CalcCoresAcid()
         {
             //Veiculo[] aux;
@@ -411,7 +418,7 @@ namespace ConsoleApp3
 
             foreach (KeyValuePair<string, int> t in CoresAcid)
             {
-                Console.WriteLine($"Cor: {t.Key}, nº acidentes: {t.Value}");
+                Console.WriteLine($"Cor: {t.Key} -> nº acidentes: {t.Value}");
             }
         }
 
