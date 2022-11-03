@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ConsoleApp3
 {
     internal class Program
@@ -16,7 +17,7 @@ namespace ConsoleApp3
 
             
 
-            int op = 8;
+            int op = 9;
             while (op != 0)
             {
                 Console.WriteLine("\n-------------------MENU-----------------");
@@ -26,8 +27,9 @@ namespace ConsoleApp3
                 Console.WriteLine("4 - Adicionar Proprietario");
                 Console.WriteLine("5 - Consultar Proprietarios");
                 Console.WriteLine("6 - Editar dados Proprietarios");
-                Console.WriteLine("7 - Prop com + que 1 carro");
-                Console.WriteLine("8 - Sair");
+                Console.WriteLine("7 - Proprietarios com mais de 1 carro registado");
+                Console.WriteLine("8 - Cores com mais de 1 acidente");
+                Console.WriteLine("0 - Sair");
                 Console.WriteLine("------------------------------------------");
 
 
@@ -45,7 +47,8 @@ namespace ConsoleApp3
                     case 5: FazerConsultaP(); break;
                     case 6: EditarP(); break;
                     case 7: CalcPC(); break;
-                    case 8: Environment.Exit(0); break;
+                    case 8: CalcCoresAcid(); break;
+                    case 0: Environment.Exit(0); break;
 
                     
 
@@ -112,7 +115,7 @@ namespace ConsoleApp3
                     if (v.Matricula == mat)
                     {
 
-                        Console.WriteLine($"Veiculo encontrado! - {v.Matricula} , {v.Seguro} , {v.Estado} , {v.Seguro} , {v.Nome_proprietario}, {v.Num_acidentes}");
+                        Console.WriteLine($"\nVeiculo encontrado! \nMatricula: {v.Matricula} \nSeguro: {v.Seguro} \nEstado: {v.Estado} \nSeguro: {v.Seguro} \nNome do proprietario: {v.Nome_proprietario} Numero de acidentes: {v.Num_acidentes}");
                     }
                 }
             }
@@ -162,7 +165,7 @@ namespace ConsoleApp3
                         Console.Write("Insira o numero de acidentes do veiculo:");
                         int n_acidentes = int.Parse(Console.ReadLine());
 
-                        Console.WriteLine($"Novos dados: {v.Matricula} , {v.Seguro} , {v.Estado} , {v.Seguro} , {v.Nome_proprietario}, {v.Num_acidentes}");
+                        Console.WriteLine($"Novos dados: \nMatricula: {v.Matricula} \nSeguro: {v.Seguro} \nEstado: {v.Estado} \nSeguro: {v.Seguro} \nNome do proprietario: {v.Nome_proprietario} Numero de acidentes: {v.Num_acidentes}");
                         Console.WriteLine("\nVeiculo editado com sucesso!");
 
                     }
@@ -281,9 +284,11 @@ namespace ConsoleApp3
 
         //------------------- Outos --------------------------------
 
+        // Props com mais de um veiculo registado
         static private void CalcPC()
         {
-             //Veiculo[] aux;
+            //Veiculo[] aux;
+            //string[] aux;
              List<string> aux = new List<string>();
 
             try
@@ -325,6 +330,88 @@ namespace ConsoleApp3
             foreach (string p in aux)
             {
                 Console.WriteLine(p);
+            }
+        }
+
+
+        static private void CalcCoresAcid()
+        {
+            //Veiculo[] aux;
+            //List<string> cores = new List<string>();
+            //List<string> aux = new List<string>();
+            Dictionary<string, int> CoresAcid = new Dictionary<string, int>();
+
+            try
+            {
+                foreach (Veiculo v in r.GetVeiculos())
+                {
+                    //int count = 0;
+
+                    if (v.Num_acidentes >= 1)
+                    {
+                        if (!CoresAcid.ContainsKey(v.Cor))
+                        {
+                            CoresAcid.Add(v.Cor, v.Num_acidentes);
+                        }
+                        else
+                        {
+                            CoresAcid[v.Cor] += v.Num_acidentes;
+                        
+                        }
+                        //cores.Add(v.Cor);
+                    }
+
+
+                }
+
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine(" ");
+
+            }
+            /*
+            foreach (string x in cores)
+            {
+                int count = 0;
+
+                foreach (string z in cores)
+                {
+                    if (x == z)
+                    {
+                        count++;
+                        if (count > 1)
+                        {
+                            if (!aux.Contains(z))
+                            {
+                                aux.Add(z);
+
+                            }
+                        }
+
+
+                    }
+
+                }
+
+            }
+            */
+
+
+
+
+            Console.WriteLine("As seguintes cores têm mais de um acidente registado:");
+            /*
+            foreach (string p in aux)
+            {
+                Console.WriteLine(p);
+            }
+            */
+
+            foreach (KeyValuePair<string, int> t in CoresAcid)
+            {
+                Console.WriteLine($"Cor: {t.Key}, nº acidentes: {t.Value}");
             }
         }
 
