@@ -21,7 +21,7 @@ namespace ConsoleApp3
             proxLivre = 0;
         }
 
-        static public Array GetVeiculos()
+        public Array GetVeiculos()
         {
             return registos;
         }

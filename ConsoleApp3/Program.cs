@@ -10,8 +10,11 @@ namespace ConsoleApp3
 {
     internal class Program
     {
+        static Seguradora r = new Seguradora(100);
         static void Main(string[] args)
         {
+
+            
 
             int op = 7;
             while (op != 0)
@@ -51,7 +54,7 @@ namespace ConsoleApp3
 
         static private void FazerRegisto() 
         {
-            Seguradora r = new Seguradora(100);
+            
 
             Console.Write("Insira a matricula:");
             string mat = Console.ReadLine();
@@ -90,14 +93,18 @@ namespace ConsoleApp3
             try
             {
 
-                foreach (Veiculo v in Seguradora.GetVeiculos())
+                
+
+                foreach (Veiculo v in r.GetVeiculos())
                 {
+                    if (v.Matricula == mat)
+                    {
 
-                    Console.WriteLine($"Veiculo encontrado! - {v.Matricula} , {v.Seguro} , {v.Estado} , {v.Seguro} , {v.Nome_proprietario}, {v.Num_acidentes}");
-
+                        Console.WriteLine($"Veiculo encontrado! - {v.Matricula} , {v.Seguro} , {v.Estado} , {v.Seguro} , {v.Nome_proprietario}, {v.Num_acidentes}");
+                    }
                 }
             }
-            catch (Exception)
+            catch (Exception erro)
             {
                 Console.WriteLine(" ");
 
@@ -122,7 +129,7 @@ namespace ConsoleApp3
 
             try
             {
-                foreach (Veiculo v in Seguradora.GetVeiculos())
+                foreach (Veiculo v in r.GetVeiculos())
                 {
 
 
