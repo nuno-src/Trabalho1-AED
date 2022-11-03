@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp3
 {
-    internal class Proprietário
+    public class Proprietário
     {
         private string nome;
         private int nif;
@@ -30,7 +30,7 @@ namespace ConsoleApp3
 
 
 
-        protected string Nome { get => nome; set => nome = value; }
-        protected int Nif { get => nif; set => nif = value; }
+        public string Nome { get => nome; set => nome = value; }
+        public int Nif { get => nif; set => nif = value; }
     }
 }

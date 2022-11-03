@@ -9,7 +9,9 @@ namespace ConsoleApp3
     public class Seguradora
     {
         static public Veiculo[] registos;
+        static public Proprietário[] registos_prop;
         private int proxLivre;
+        private int proxLivre2;
 
         // private List<string> nomes = new List<string>();
         // private static List<string> matriculas = new List<string>();
@@ -18,13 +20,18 @@ namespace ConsoleApp3
         public Seguradora(int numeroVeiculos)
         {
             registos = new Veiculo[numeroVeiculos];
+            registos_prop = new Proprietário[numeroVeiculos];
             proxLivre = 0;
+            proxLivre2 = 0;
         }
 
+
+        //---------------------- Veiculo -------------------------
         public Array GetVeiculos()
         {
             return registos;
         }
+
 
         public void Registar(string nmatricula, string ncor, string nestado, string nseguro, string nnome_proprietario, int nnum_acidentes)
         {
@@ -65,6 +72,60 @@ namespace ConsoleApp3
                 res.AppendLine(registos[i].ToString());
             return res.ToString();
         }
+
+        //------------------------- Proprietario ------------------------
+
+
+        public Array GetProprietarios()
+        {
+            return registos_prop;
+        }
+
+
+        public void RegistarP(string nnome, int nnif)
+        {
+            Proprietário novo_prop = new Proprietário(nnome, nnif);
+
+
+            if (!ExisteP(novo_prop))
+            {
+                registos_prop[proxLivre2] = novo_prop;
+                proxLivre2++;
+            }
+        }
+
+        private bool ExisteP(Proprietário novo_prop)
+        {
+            for (int i = 0; i < proxLivre2; i++)
+            {
+                if (registos_prop[i].Nome == novo_prop.Nome)
+                    return true;
+            }
+            return false;
+        }
+
+        public Proprietário ConsultaP(int nif)
+        {
+            for (int i = 0; i < proxLivre2; i++)
+            {
+                if (registos_prop[i].Nif == nif)
+                    return registos_prop[i];
+            }
+            return null;
+        }
+
+        
+
+
+
+
+
+
+
+
+
+
+
 
 
         //------------------------- V1 COM O USO DE LISTAS -------------------------------------------------------
